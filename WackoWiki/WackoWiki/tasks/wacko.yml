@@ -1,0 +1,13 @@
+---
+- name: Extract WackoWiki to a web folder
+  unarchive:
+    src: https://downloads.sourceforge.net/wackowiki/wacko.r{{ wacko_version }}.zip
+    dest: /var/www/html/
+    group: www-data
+    owner: www-data
+    remote_src: yes
+
+- name: Move foo to bar
+  command: mv /var/www/html/wacko.r{{ wacko_version }}/wacko /var/www/html/wacko
+
+# vim: ts=4 sw=4 sts=4 sr noet

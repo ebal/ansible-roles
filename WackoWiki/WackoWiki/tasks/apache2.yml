@@ -1,0 +1,20 @@
+---
+- name: apache2
+  block:
+  - name: Enable .htaccess
+    blockinfile:
+      path: /etc/apache2/sites-available/000-default.conf
+      insertbefore: "</VirtualHost>"
+      block: |
+        # enable.htaccess
+        <Directory /var/www/html/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Require all granted
+        </Directory>
+  - name: Enabling module rewrite
+    shell: |
+      a2enmod rewrite
+    notify: restart apache2
+
+# vim: ts=4 sw=4 sts=4 sr noet

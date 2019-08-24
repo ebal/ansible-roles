@@ -1,0 +1,10 @@
+- name: Upload mysql template file
+  template:
+    src: templates/wacko.sql.j2
+    dest: /tmp/wacko.sql
+
+- name: Setup wacko mysql
+  shell: |
+    mysql < /tmp/wacko.sql
+
+# vim: ts=4 sw=4 sts=4 sr noet

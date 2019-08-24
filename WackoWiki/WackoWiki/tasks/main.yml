@@ -1,0 +1,14 @@
+---
+- name: Install Requirements
+  include_tasks: install.yml
+
+- name: Setup Apache2
+  include_tasks: apache2.yml
+
+- name: Setup MySQL
+  include_tasks: mysql.yml
+
+- name: Setup WackoWiki
+  include_tasks: wacko.yml
+
+# vim: ts=4 sw=4 sts=4 sr noet

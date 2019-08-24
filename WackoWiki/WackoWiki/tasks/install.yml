@@ -1,0 +1,21 @@
+---
+- name: Install a list of PHP packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - php
+      - php-common
+      - php-bcmath
+      - php-ctype
+      - php-gd
+      - php-iconv
+      - php-json
+      - php-mbstring
+      - php-mysql
+      - apache2
+      - libapache2-mod-php
+      - mariadb-server
+      - unzip
+
+# vim: ts=4 sw=4 sts=4 sr noet
