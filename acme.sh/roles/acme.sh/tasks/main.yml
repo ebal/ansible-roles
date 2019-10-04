@@ -22,3 +22,6 @@
       --dnssleep 300
   environment:
     GANDI_LIVEDNS_KEY: "{{ GANDI_LIVEDNS_KEY }}"
+  register: acme
+  failed_when: acme.stderr | length > 0
+
