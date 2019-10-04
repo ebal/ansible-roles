@@ -1,0 +1,24 @@
+---
+- name: Install Dependencies
+  apt:
+    pkg:
+    - socat
+    state: present
+
+- name: Download acme.sh
+  get_url:
+    url: https://get.acme.sh
+    dest: /tmp/acme.sh
+    mode: '0750'
+
+- name: Install acme.sh
+  shell: /tmp/acme.sh
+
+- name: Create WildCard Certificate
+  shell: |
+    acme.sh --issue --dns dns_gandi_livedns \
+      -d {{ DOMAIN }} \
+      -d "*.{{ DOMAIN }}" \
+      --dnssleep 300
+  environment:
+    GANDI_LIVEDNS_KEY: "{{ GANDI_LIVEDNS_KEY }}"
