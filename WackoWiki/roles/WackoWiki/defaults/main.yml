@@ -1,5 +1,4 @@
 ---
 mysql_password: "YOURNEWPASSWORD"
 wackowiki_name: "wacko"
-wacko_version: "6.0.17"
-# vim: ts=4 sw=4 sts=4 sr noet
+wacko_version: "6.0.25"

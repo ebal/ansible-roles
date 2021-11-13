@@ -10,4 +10,3 @@
 
 - name: Setup WackoWiki
   include_tasks: wacko.yml
-# vim: ts=4 sw=4 sts=4 sr noet

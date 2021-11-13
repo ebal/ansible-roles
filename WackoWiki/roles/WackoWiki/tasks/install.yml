@@ -2,6 +2,8 @@
 - name: Install a list of PHP packages
   apt:
     name: "{{ packages }}"
+    update_cache: yes
+    state: present
   vars:
     packages:
       - apache2
@@ -18,4 +20,3 @@
       - php-mbstring
       - php-mysql
       - unzip
-# vim: ts=4 sw=4 sts=4 sr noet

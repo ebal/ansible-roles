@@ -2,9 +2,14 @@
   template:
     src: templates/wacko.sql.j2
     dest: /tmp/wacko.sql
+    mode: '0640'
+
+- name: Does mysql template file exists?
+  stat:
+    path: /tmp/wacko.sql
+  register: register_wacko_sql
 
 - name: Setup wacko mysql
   shell: |
     mysql < /tmp/wacko.sql
-
-# vim: ts=4 sw=4 sts=4 sr noet
+  when: register_wacko_sql.stat.exists

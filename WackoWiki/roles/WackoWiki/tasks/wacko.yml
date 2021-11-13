@@ -1,12 +1,17 @@
 ---
 - name: Extract WackoWiki to a web folder
   unarchive:
-    src: https://downloads.sourceforge.net/wackowiki/wacko.r{{ wacko_version }}.zip
-    dest: /var/www/html/
+    src: https://github.com/WackoWiki/wackowiki/archive/refs/tags/{{ wacko_version }}.tar.gz
+    dest: /tmp/
     group: www-data
     owner: www-data
     remote_src: yes
 
+- name: Does wacko index.php file exists?
+  stat:
+    path: /tmp/wackowiki-{{ wacko_version }}/wacko/index.php
+  register: register_wacko_index
+
 - name: Move foo to bar
-  command: mv /var/www/html/wacko.r{{ wacko_version }}/wacko /var/www/html/wacko
-# vim: ts=4 sw=4 sts=4 sr noet
+  command: mv /tmp/wackowiki-{{ wacko_version }}/wacko /var/www/html/
+  when: register_wacko_sql.stat.exists

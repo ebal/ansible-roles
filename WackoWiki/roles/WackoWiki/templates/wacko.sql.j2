@@ -1,4 +1,4 @@
 CREATE DATABASE IF NOT EXISTS {{ wackowiki_name }};
-CREATE USER '{{ wackowiki_name }}'@'localhost' IDENTIFIED BY '{{ mysql_password }}';
+CREATE USER IF NOT EXISTS '{{ wackowiki_name }}'@'localhost' IDENTIFIED BY '{{ mysql_password }}';
 GRANT  ALL PRIVILEGES ON {{ wackowiki_name }}.* TO '{{ wackowiki_name }}'@'localhost';
 FLUSH  PRIVILEGES;
